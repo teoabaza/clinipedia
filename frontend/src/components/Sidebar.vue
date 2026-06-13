@@ -7,10 +7,10 @@
 
     <!-- Header -->
     <div class="flex items-center justify-between px-4 py-4 border-b border-white/10">
-      <div class="flex items-center gap-2">
+      <button @click="store.navigate(null)" class="flex items-center gap-2">
         <img src="/clinipedia-logo-no-text.png" alt="Clinipedia" class="h-7 w-auto" />
         <span class="font-semibold text-slate-100 text-sm">Clinipedia</span>
-      </div>
+      </button>
       <div class="flex items-center gap-1">
         <button
           @click="store.logout()"
