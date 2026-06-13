@@ -8,8 +8,8 @@ const { initDb } = require('./db');
 const app = express();
 
 const allowedOrigins = [
-  'https://clinipedia.teoabaza.com',   // production frontend
-  'http://localhost:5173',              // local Vite dev server
+  'http://localhost:5173',
+  ...(process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : []),
 ];
 
 app.use(cors({

@@ -3,11 +3,11 @@
     <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-10 w-full max-w-sm">
 
       <!-- Logo -->
-      <div class="flex justify-center mb-4">
-        <img src="/clinipedia-logo.png" alt="Clinipedia" class="h-16 w-auto" />
+      <div class="flex justify-center mb-2">
+        <img src="/clinipedia-logo.png" alt="Clinipedia" class="home-logo w-auto" />
       </div>
 
-      <p class="text-center text-sm text-slate-500 mb-7">Your clinical knowledge base</p>
+      <p class="home-logo-text text-sm text-slate-500 mb-7">Your clinical knowledge base</p>
 
       <form @submit.prevent="handleLogin">
         <div class="mb-4">
@@ -71,3 +71,13 @@ async function handleLogin() {
   }
 }
 </script>
+
+<style scoped>
+.home-logo {
+  height: 80px;
+}
+.home-logo-text {
+  font-size: 13px;
+  text-align: center;
+}
+</style>
