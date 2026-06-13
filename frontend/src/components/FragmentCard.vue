@@ -1,18 +1,18 @@
 <template>
   <div
-    class="relative bg-white border border-slate-200 rounded-r-xl p-5 group"
+    class="relative bg-white border border-slate-200 rounded-r-xl p-4 sm:p-5 group"
     :style="{ borderLeft: `4px solid ${fragment.color || '#94a3b8'}` }"
   >
-    <div v-if="fragment.title" class="font-semibold text-sm text-slate-700 mb-2">
+    <div v-if="fragment.title" class="font-semibold text-sm text-slate-700 mb-2 pr-16">
       {{ fragment.title }}
     </div>
     <div class="prose prose-sm max-w-none text-slate-700" v-html="fragment.content"></div>
 
-    <!-- Actions -->
-    <div class="absolute top-3 right-3 hidden group-hover:flex gap-1">
+    <!-- Actions — always visible on touch -->
+    <div class="absolute top-3 right-3 flex gap-1 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
       <button
         @click="$emit('edit')"
-        class="w-6 h-6 flex items-center justify-center rounded bg-white border border-slate-200 text-slate-500 hover:text-slate-800 hover:border-slate-300 transition-colors"
+        class="w-6 h-6 flex items-center justify-center rounded bg-white border border-slate-200 text-slate-500 hover:text-slate-800 hover:border-slate-300 transition-colors shadow-sm"
         title="Edit"
       >
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -22,7 +22,7 @@
       </button>
       <button
         @click="$emit('delete')"
-        class="w-6 h-6 flex items-center justify-center rounded bg-white border border-slate-200 text-slate-500 hover:text-red-600 hover:border-red-200 transition-colors"
+        class="w-6 h-6 flex items-center justify-center rounded bg-white border border-slate-200 text-slate-500 hover:text-red-600 hover:border-red-200 transition-colors shadow-sm"
         title="Delete"
       >
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">

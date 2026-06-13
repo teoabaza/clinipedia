@@ -1,23 +1,38 @@
 <template>
-  <aside class="w-64 bg-slate-900 text-slate-200 flex flex-col shrink-0 overflow-hidden border-r border-white/5">
+  <aside
+    class="w-64 bg-slate-900 text-slate-200 flex flex-col shrink-0 overflow-hidden border-r border-white/5
+           fixed inset-y-0 left-0 z-30 transition-transform duration-300 lg:relative lg:translate-x-0"
+    :class="open ? 'translate-x-0' : '-translate-x-full'"
+  >
 
     <!-- Header -->
     <div class="flex items-center justify-between px-4 py-4 border-b border-white/10">
       <div class="flex items-center gap-2">
-        <img src="/clinipedia-logo.png" alt="Clinipedia" class="h-7 w-auto" />
+        <img src="/clinipedia-logo-no-text.png" alt="Clinipedia" class="h-7 w-auto" />
         <span class="font-semibold text-slate-100 text-sm">Clinipedia</span>
       </div>
-      <button
-        @click="store.logout()"
-        class="p-1.5 rounded-md text-slate-400 hover:text-slate-100 hover:bg-white/10 transition-colors"
-        title="Sign out"
-      >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-          <polyline points="16 17 21 12 16 7"/>
-          <line x1="21" y1="12" x2="9" y2="12"/>
-        </svg>
-      </button>
+      <div class="flex items-center gap-1">
+        <button
+          @click="store.logout()"
+          class="p-1.5 rounded-md text-slate-400 hover:text-slate-100 hover:bg-white/10 transition-colors"
+          title="Sign out"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+        </button>
+        <!-- Close button, mobile only -->
+        <button
+          @click="$emit('close')"
+          class="lg:hidden p-1.5 rounded-md text-slate-400 hover:text-slate-100 hover:bg-white/10 transition-colors"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
     </div>
 
     <!-- Breadcrumb trail -->
@@ -73,6 +88,9 @@
 import { ref, watch } from 'vue'
 import { useKbStore } from '../stores/kb'
 import { api } from '../api'
+
+defineProps({ open: Boolean })
+defineEmits(['close'])
 
 const store = useKbStore()
 const siblingNodes = ref([])

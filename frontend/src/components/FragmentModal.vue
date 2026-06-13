@@ -1,7 +1,7 @@
 <template>
   <Teleport to="body">
-    <div class="fixed inset-0 bg-slate-900/50 flex items-center justify-center z-50 p-4" @click.self="$emit('close')">
-      <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl flex flex-col overflow-hidden max-h-[90vh]">
+    <div class="fixed inset-0 bg-slate-900/50 flex items-end sm:items-center justify-center z-50 sm:p-4" @click.self="$emit('close')">
+      <div class="bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl w-full sm:max-w-2xl flex flex-col overflow-hidden max-h-[92vh]">
 
         <!-- Header -->
         <div class="flex items-center justify-between px-5 py-4 border-b border-slate-200 shrink-0">
@@ -14,8 +14,7 @@
         </div>
 
         <!-- Body -->
-        <div class="p-5 flex flex-col gap-4 overflow-y-auto flex-1">
-          <!-- Title -->
+        <div class="p-4 sm:p-5 flex flex-col gap-4 overflow-y-auto flex-1">
           <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">
               Title <span class="text-slate-400 font-normal">(optional)</span>
@@ -24,17 +23,15 @@
               v-model="title"
               type="text"
               placeholder="Fragment title…"
-              class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              class="w-full px-3 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
 
-          <!-- Colour -->
           <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Colour accent</label>
             <ColorPicker v-model="color" />
           </div>
 
-          <!-- Editor -->
           <div>
             <label class="block text-sm font-medium text-slate-700 mb-1">Content</label>
             <div class="border border-slate-300 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500">
@@ -53,13 +50,13 @@
                   <span class="text-xs line-through">S</span>
                 </ToolbarBtn>
                 <div class="w-px h-5 bg-slate-200 mx-0.5 self-center"/>
-                <ToolbarBtn title="Heading 1" :active="editor?.isActive('heading', { level: 1 })" @click="editor?.chain().focus().toggleHeading({ level: 1 }).run()">
+                <ToolbarBtn title="H1" :active="editor?.isActive('heading', { level: 1 })" @click="editor?.chain().focus().toggleHeading({ level: 1 }).run()">
                   <span class="text-xs font-semibold">H1</span>
                 </ToolbarBtn>
-                <ToolbarBtn title="Heading 2" :active="editor?.isActive('heading', { level: 2 })" @click="editor?.chain().focus().toggleHeading({ level: 2 }).run()">
+                <ToolbarBtn title="H2" :active="editor?.isActive('heading', { level: 2 })" @click="editor?.chain().focus().toggleHeading({ level: 2 }).run()">
                   <span class="text-xs font-semibold">H2</span>
                 </ToolbarBtn>
-                <ToolbarBtn title="Heading 3" :active="editor?.isActive('heading', { level: 3 })" @click="editor?.chain().focus().toggleHeading({ level: 3 }).run()">
+                <ToolbarBtn title="H3" :active="editor?.isActive('heading', { level: 3 })" @click="editor?.chain().focus().toggleHeading({ level: 3 }).run()">
                   <span class="text-xs font-semibold">H3</span>
                 </ToolbarBtn>
                 <div class="w-px h-5 bg-slate-200 mx-0.5 self-center"/>
@@ -73,16 +70,6 @@
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/></svg>
                 </ToolbarBtn>
                 <div class="w-px h-5 bg-slate-200 mx-0.5 self-center"/>
-                <ToolbarBtn title="Align left" @click="editor?.chain().focus().setTextAlign('left').run()">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
-                </ToolbarBtn>
-                <ToolbarBtn title="Align center" @click="editor?.chain().focus().setTextAlign('center').run()">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="10" x2="6" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="18" y1="18" x2="6" y2="18"/></svg>
-                </ToolbarBtn>
-                <ToolbarBtn title="Align right" @click="editor?.chain().focus().setTextAlign('right').run()">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="21" y1="10" x2="7" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="7" y2="18"/></svg>
-                </ToolbarBtn>
-                <div class="w-px h-5 bg-slate-200 mx-0.5 self-center"/>
                 <ToolbarBtn title="Link" :active="editor?.isActive('link')" @click="insertLink">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
                 </ToolbarBtn>
@@ -93,8 +80,6 @@
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </ToolbarBtn>
               </div>
-
-              <!-- Editor mount -->
               <EditorContent :editor="editor" />
             </div>
             <p class="text-xs text-slate-400 mt-1">You can paste images directly into the editor.</p>
@@ -102,11 +87,11 @@
         </div>
 
         <!-- Footer -->
-        <div class="flex justify-end gap-2 px-5 py-4 border-t border-slate-200 bg-slate-50 shrink-0">
-          <button @click="$emit('close')" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-800 border border-slate-300 rounded-lg hover:bg-slate-100 transition-colors">
+        <div class="flex gap-2 px-4 sm:px-5 py-4 border-t border-slate-200 bg-slate-50 shrink-0">
+          <button @click="$emit('close')" class="flex-1 sm:flex-none sm:px-4 py-2.5 text-sm font-medium text-slate-600 hover:text-slate-800 border border-slate-300 rounded-lg hover:bg-slate-100 transition-colors">
             Cancel
           </button>
-          <button @click="save" class="px-4 py-2 text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
+          <button @click="save" class="flex-1 sm:flex-none sm:px-4 py-2.5 text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
             Save
           </button>
         </div>
@@ -116,7 +101,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onBeforeUnmount } from 'vue'
 import { useEditor, EditorContent } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
 import Image from '@tiptap/extension-image'

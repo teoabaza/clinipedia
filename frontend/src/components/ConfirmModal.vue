@@ -1,7 +1,7 @@
 <template>
   <Teleport to="body">
-    <div class="fixed inset-0 bg-slate-900/50 flex items-center justify-center z-50 p-4" @click.self="$emit('close')">
-      <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden">
+    <div class="fixed inset-0 bg-slate-900/50 flex items-end sm:items-center justify-center z-50 sm:p-4" @click.self="$emit('close')">
+      <div class="bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl w-full sm:max-w-sm overflow-hidden">
 
         <div class="flex items-center justify-between px-5 py-4 border-b border-slate-200">
           <h3 class="font-semibold text-base text-slate-900">Confirm delete</h3>
@@ -20,11 +20,11 @@
           </p>
         </div>
 
-        <div class="flex justify-end gap-2 px-5 py-4 border-t border-slate-200 bg-slate-50">
-          <button @click="$emit('close')" class="px-4 py-2 text-sm font-medium text-slate-600 border border-slate-300 rounded-lg hover:bg-slate-100 transition-colors">
+        <div class="flex gap-2 px-5 py-4 border-t border-slate-200 bg-slate-50">
+          <button @click="$emit('close')" class="flex-1 px-4 py-2.5 text-sm font-medium text-slate-600 border border-slate-300 rounded-lg hover:bg-slate-100 transition-colors">
             Cancel
           </button>
-          <button @click="$emit('confirmed')" class="px-4 py-2 text-sm font-medium bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors">
+          <button @click="$emit('confirmed')" class="flex-1 px-4 py-2.5 text-sm font-medium bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors">
             Delete
           </button>
         </div>

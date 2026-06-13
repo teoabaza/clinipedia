@@ -1,6 +1,6 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-slate-50 to-sky-100">
-    <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-10 w-full max-w-sm">
+  <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-slate-50 to-sky-100 p-4">
+    <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 sm:p-10 w-full max-w-sm">
 
       <!-- Logo -->
       <div class="flex justify-center mb-2">
