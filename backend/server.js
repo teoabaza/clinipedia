@@ -7,7 +7,18 @@ const { initDb } = require('./db');
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = [
+  'https://clinipedia.teoabaza.com',   // production frontend
+  'http://localhost:5173',              // local Vite dev server
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+    callback(new Error(`CORS blocked: ${origin}`));
+  },
+  credentials: true,
+}));
 app.use(express.json({ limit: '50mb' })); // large limit for pasted images (base64)
 
 // Auth middleware

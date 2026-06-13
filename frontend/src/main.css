@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tiptap editor styles */
+.ProseMirror {
+  @apply outline-none min-h-[200px] p-3 text-sm leading-relaxed text-slate-800;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  @apply text-slate-400 pointer-events-none float-left h-0;
+}
+
+.ProseMirror h1 { @apply text-2xl font-semibold my-2; }
+.ProseMirror h2 { @apply text-xl font-semibold my-2; }
+.ProseMirror h3 { @apply text-lg font-semibold my-1; }
+.ProseMirror ul { @apply list-disc pl-5 my-1; }
+.ProseMirror ol { @apply list-decimal pl-5 my-1; }
+.ProseMirror li { @apply my-0.5; }
+.ProseMirror blockquote { @apply border-l-4 border-slate-300 pl-3 text-slate-500 my-2 italic; }
+.ProseMirror code { @apply bg-slate-100 px-1 py-0.5 rounded text-sm font-mono; }
+.ProseMirror pre { @apply bg-slate-800 text-slate-100 p-3 rounded-lg overflow-x-auto my-2; }
+.ProseMirror pre code { @apply bg-transparent p-0; }
+.ProseMirror a { @apply text-blue-600 underline; }
+.ProseMirror img { @apply max-w-full rounded-lg my-2; }
+.ProseMirror hr { @apply border-slate-200 my-4; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { @apply bg-slate-300 rounded-full; }

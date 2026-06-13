@@ -1,6 +1,6 @@
-# CardioKB
+# Clinipedia
 
-A personal cardiology knowledge base — infinitely nestable categories, subcategories, and rich text fragments with image/video support.
+A personal clinical knowledge base — infinitely nestable categories, subcategories, and rich text fragments with image/video support.
 
 ## Stack
 
